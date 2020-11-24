@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1c894062-baae-48c2-a9c6-c1c1dee879c8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/techonehub/Dto/DtoLogin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/techonehub/MeuAdapeter/MeuAdapterAgenda.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/meuadapter_agenda.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/techonehub/AboutActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/techonehub/AboutActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/techonehub/AgendaActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/techonehub/AgendaActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/techonehub/CadastrarClienteActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/techonehub/CadastrarClienteActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/techonehub/CadastrarServicoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/techonehub/CadastrarServicoActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/techonehub/ClienteActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/techonehub/ClienteActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/techonehub/ConsultarClienteActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/techonehub/ConsultarClienteActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/techonehub/DaoTechOneHub.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/techonehub/DaoTechOneHub.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/techonehub/DtoCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/techonehub/Dto/DtoC
