@@ -24,7 +24,7 @@ public class DaoTechOneHub extends SQLiteOpenHelper {
     final String SERVICO = "TBL_SERVICO";
 
     public DaoTechOneHub(@Nullable Context context) {
-        super(context, "BD_TESTE", null, 1);
+        super(context, "BD_TECHONEHUB", null, 1);
     }
 
     @Override
