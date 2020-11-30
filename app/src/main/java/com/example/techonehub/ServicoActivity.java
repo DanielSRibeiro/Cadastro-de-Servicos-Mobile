@@ -8,11 +8,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class ServicoActivity extends AppCompatActivity {
 
     ImageView imageViewCall, imagemViewBack;
-    CardView cardViewCadastrarServiço;
+    CardView cardViewCadastrarServiço, cardViewConsultarServiço;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,7 @@ public class ServicoActivity extends AppCompatActivity {
         imagemViewBack = findViewById(R.id.imageViewBackServico);
         cardViewCadastrarServiço = findViewById(R.id.cardViewCadastrarServiço);
         imageViewCall = findViewById(R.id.imageViewCallServico);
+        cardViewConsultarServiço = findViewById(R.id.cardViewConsultarServiço);
 
         imageViewCall.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +37,14 @@ public class ServicoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ServicoActivity.this, CadastrarServicoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        cardViewConsultarServiço.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ServicoActivity.this, ConsultarServicoActivity.class);
                 startActivity(intent);
             }
         });

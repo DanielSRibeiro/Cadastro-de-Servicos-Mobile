@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CadastrarServicoActivity">
+    tools:context=".AlterarServicoActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -58,7 +58,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cadastro de Serviço"
+        android:text="Alterar de Serviço"
         android:textColor="@color/white"
         android:textSize="18dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView5"
@@ -85,66 +85,44 @@
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <EditText
-            android:id="@+id/editTextNmEmpresa"
+            android:id="@+id/editTextNmEmpresaAlterarServico"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nome da Empresa" />
 
         <EditText
-            android:id="@+id/editTextCpfServico"
+            android:id="@+id/editTextCpfAlterarServico"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="CPF do Cliente Cadastrado"
             android:inputType="number" />
 
         <EditText
-            android:id="@+id/editTextCNPJServico"
+            android:id="@+id/editTextCNPJAlterarServico"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="CNPJ"
             android:inputType="number" />
 
         <EditText
-            android:id="@+id/editTextEmailServico"
+            android:id="@+id/editTextEmailAlterarServico"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="E-mail da Empresa"
             android:inputType="textEmailAddress" />
 
         <EditText
-            android:id="@+id/editTextTelServico"
+            android:id="@+id/editTextTelAlterarServico"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Telefone de Contato"
             android:inputType="number" />
 
         <EditText
-            android:id="@+id/editTextCepServico"
+            android:id="@+id/editTextEnderecoAlterarServico"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="CEP da Empresa"
-            android:inputType="number" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/editTextRuaServico"
-                android:layout_width="1dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:hint="Rua" />
-
-            <EditText
-                android:id="@+id/editTextNEmpresa"
-                android:layout_width="1dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Nº"
-                android:inputType="number" />
-        </LinearLayout>
+            android:hint="Endereço"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -152,13 +130,13 @@
             android:orientation="horizontal">
 
             <Spinner
-                android:id="@+id/SpinnerServico"
+                android:id="@+id/SpinnerAlterarServico"
                 android:layout_width="1dp"
                 android:layout_height="40dp"
                 android:layout_weight="2" />
 
             <Spinner
-                android:id="@+id/SpinnerSistema"
+                android:id="@+id/SpinnerSistemaAlterarServico"
                 android:layout_width="1dp"
                 android:layout_height="40dp"
                 android:layout_weight="2" />
@@ -166,25 +144,50 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/editTextDescricao"
+            android:id="@+id/editTextDescricaoAlterarServico"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Descrição" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="R$"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="16dp"/>
+            <EditText
+                android:id="@+id/editTextValorAlterarServico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Valor"
+                android:inputType="numberDecimal"
+                android:enabled="false"
+                android:textStyle="bold"
+                android:typeface="monospace"/>
+
+        </LinearLayout>
+
         <Button
-            android:id="@+id/buttonCadastrarServico"
+            android:id="@+id/buttonAlterarServico"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="15dp"
-            android:text="Cadastrar Serviço"
+            android:text="Alterar Serviço"
             android:background="@drawable/botaocadastrarcliente"
             android:textSize="16dp"
             android:textColor="@color/black"
-            android:typeface="monospace" />
+            android:typeface="monospace"
+            android:inputType="numberDecimal"/>
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageViewBackCadastrarServico"
+        android:id="@+id/imageViewBackAlterarServico"
         android:layout_width="50px"
         android:layout_height="54px"
         android:layout_marginLeft="20dp"
@@ -194,7 +197,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageViewCallCadastrarServico"
+        android:id="@+id/imageViewCallAlterarServico"
         android:layout_width="50px"
         android:layout_height="54px"
         android:layout_marginTop="20dp"

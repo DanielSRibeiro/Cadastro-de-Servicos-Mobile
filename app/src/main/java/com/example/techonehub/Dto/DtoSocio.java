@@ -1,15 +1,13 @@
 package com.example.techonehub.Dto;
 public class DtoSocio {
     private int Id;
-    private String Nm, Cpf, Espec, Login, Senha;
+    private String Nm, Cpf, Espec;
 
-    public DtoSocio(int id, String nm, String cpf, String espec, String login, String senha) {
+    public DtoSocio(int id, String nm, String cpf, String espec) {
         Id = id;
         Nm = nm;
         Cpf = cpf;
         Espec = espec;
-        Login = login;
-        Senha = senha;
     }
     public DtoSocio(){}
 
@@ -43,21 +41,5 @@ public class DtoSocio {
 
     public void setEspec(String espec) {
         Espec = espec;
-    }
-
-    public String getLogin() {
-        return Login;
-    }
-
-    public void setLogin(String login) {
-        Login = login;
-    }
-
-    public String getSenha() {
-        return Senha;
-    }
-
-    public void setSenha(String senha) {
-        Senha = senha;
     }
 }

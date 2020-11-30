@@ -1,16 +1,39 @@
 package com.example.techonehub;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.example.techonehub.Dto.DtoServico;
+import com.example.techonehub.Dto.DtoSocio;
+import com.example.techonehub.MeuAdapter.MeuAdapterSocio;
+import com.example.techonehub.MeuAdapter.RecyclerItemClickListenerCliente;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class AgendaActivity extends AppCompatActivity {
 
     ImageView imageViewCall, imagemViewBack;
+    RecyclerView recyclerView;
+    ArrayList<DtoSocio> arrayListSocio = new ArrayList<>();
+    DaoTechOneHub daoTechOneHub = new DaoTechOneHub(AgendaActivity.this);
+    DtoSocio dtoSocio = new DtoSocio();
+    EditText editTextBuscar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +42,52 @@ public class AgendaActivity extends AppCompatActivity {
 
         imageViewCall = findViewById(R.id.imageViewCallAgenda);
         imagemViewBack = findViewById(R.id.imageViewBackAgenda);
+        recyclerView = findViewById(R.id.recyclerViewAgenda);
+        editTextBuscar = findViewById(R.id.editTextBuscarAgenda);
+
+        Adicionar();
+        arrayListSocio = daoTechOneHub.Select(dtoSocio);
+        Atualizar();
+
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListenerCliente(AgendaActivity.this, recyclerView,
+                new RecyclerItemClickListenerCliente.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Intent intent = new Intent(AgendaActivity.this, SocioAgendaActivity.class);
+                        intent.putExtra("id", arrayListSocio.get(position).getId());
+                        intent.putExtra("nome", arrayListSocio.get(position).getNm());
+                        intent.putExtra("cpf", arrayListSocio.get(position).getCpf());
+                        intent.putExtra("espec", arrayListSocio.get(position).getEspec());
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+
+                    }
+
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    }
+                }));
+        editTextBuscar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                arrayListSocio = daoTechOneHub.LikeAgenda(s.toString());
+                Atualizar();
+            }
+        });
 
         imageViewCall.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,5 +104,34 @@ public class AgendaActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void Atualizar() {
+        MeuAdapterSocio adapter = new MeuAdapterSocio(arrayListSocio);
+        recyclerView.setLayoutManager(new LinearLayoutManager(AgendaActivity.this));
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void Adicionar() {
+        dtoSocio = new DtoSocio(1,"Daniel Santos Ribeiro","123456789-01","Desenvolvedor Mobile");
+        arrayListSocio.add(dtoSocio);
+        daoTechOneHub.Insert(dtoSocio);
+        
+        dtoSocio = new DtoSocio(2,"Julia Nóbrega","020406080-00","Desenvolvedor Front-End");
+        arrayListSocio.add(dtoSocio);
+        daoTechOneHub.Insert(dtoSocio);
+        
+        DtoSocio dtoSocio = new DtoSocio(3,"Vitor Lopes","003006009-01","Infraestrutura");
+        arrayListSocio.add(dtoSocio);
+        daoTechOneHub.Insert(dtoSocio);
+
+        dtoSocio = new DtoSocio(4,"Milena Osorio do Amaral","103050709-01","Cientista de Dados");
+        arrayListSocio.add(dtoSocio);
+        daoTechOneHub.Insert(dtoSocio);
+
+        dtoSocio = new DtoSocio(5,"João Miziaria","120450780-01","Desenvolvedor Back-End");
+        arrayListSocio.add(dtoSocio);
+        daoTechOneHub.Insert(dtoSocio);
+
     }
 }

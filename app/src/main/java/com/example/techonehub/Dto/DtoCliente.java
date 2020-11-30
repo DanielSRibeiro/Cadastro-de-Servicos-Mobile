@@ -16,20 +16,6 @@ public class DtoCliente {
     }
     public DtoCliente(){}
 
-    @Override
-    public String toString() {
-        return "DtoCliente{" +
-                "Id=" + Id +
-                ", Nm='" + Nm + '\'' +
-                ", Cpf='" + Cpf + '\'' +
-                ", Tel='" + Tel + '\'' +
-                ", Ende='" + Ende + '\'' +
-                ", Rg='" + Rg + '\'' +
-                ", Email='" + Email + '\'' +
-                ", Dt='" + Dt + '\'' +
-                '}';
-    }
-
     public int getId() {
         return Id;
     }

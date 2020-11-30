@@ -3,12 +3,16 @@ package com.example.techonehub;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -17,9 +21,18 @@ import com.example.techonehub.Dto.DtoCliente;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
+import java.util.Calendar;
+
 public class CadastrarClienteActivity extends AppCompatActivity {
 
-    Button buttonCadastrarCliente;
+    Calendar cal = Calendar.getInstance();
+    int ano = cal.get(Calendar.YEAR);
+    int mes = cal.get(Calendar.MONTH);
+    int dia = cal.get(Calendar.DAY_OF_MONTH);
+    String data = dia+ "/"+ (1+mes)+"/"+ano;
+    DatePickerDialog.OnDateSetListener onDateSetListener;
+
+    Button buttonCadastrar;
     ImageView imageViewCall, imageViewBack;
     EditText editTextNCasa, editTextRua, editTextCPF, editTextRG, editTexttel, editTextEmail, editTextCEP;
     EditText editTextData, editTextNome;
@@ -32,7 +45,7 @@ public class CadastrarClienteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastrar_cliente);
 
 
-        buttonCadastrarCliente = findViewById(R.id.buttonCadastrarCliente);
+        buttonCadastrar = findViewById(R.id.buttonCadastrarCliente);
         imageViewBack = findViewById(R.id.imageViewBackCadastrarCliente);
         imageViewCall = findViewById(R.id.imageViewCallCadastrarCliente);
         editTextNome = findViewById(R.id.editTextNome);
@@ -60,7 +73,7 @@ public class CadastrarClienteActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        buttonCadastrarCliente.setOnClickListener(new View.OnClickListener() {
+        buttonCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(editTextNome.length() < 1){
@@ -105,6 +118,36 @@ public class CadastrarClienteActivity extends AppCompatActivity {
             }
 
         });
+
+        editTextData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog date = new DatePickerDialog(CadastrarClienteActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        onDateSetListener, ano,mes,dia);
+                date.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                date.setMessage("Qual é a data do seu Nascimento ?");
+                date.show();
+            }
+        });
+
+        onDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                if(month >= 9 && dayOfMonth >9){
+                    data = dayOfMonth+"/"+(1+month)+"/"+year;
+                }
+                else if(month <= 8 && dayOfMonth >9){
+                    data = dayOfMonth+"/"+"0"+(1+month)+"/"+year;
+                }
+                else if(month > 8 && dayOfMonth < 10){
+                    data = "0"+dayOfMonth+"/"+(1+month)+"/"+year;
+                }
+                else {
+                    data = "0"+dayOfMonth+"/"+"0"+(1+month)+"/"+year;
+                }
+                editTextData.setText(data);
+            }
+        };
 
         Mascara();
     }

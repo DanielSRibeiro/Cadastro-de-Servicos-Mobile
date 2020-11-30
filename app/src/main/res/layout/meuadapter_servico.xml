@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="25dp"
+    app:cardCornerRadius="5dp"
+    app:cardBackgroundColor="@color/dasboard"
+    android:layout_marginTop="10dp">>
+
+    <LinearLayout
+        android:paddingLeft="15dp"
+        android:paddingRight="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_weight="2"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:text="Empresa"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:id="@+id/textViewEmpresa"/>
+
+            <TextView
+                android:layout_marginTop="3dp"
+                android:layout_weight="1"
+                android:layout_width="1dp"
+                android:paddingLeft="5dp"
+                android:textColor="@color/black"
+                android:layout_height="match_parent"
+                android:text="Telefone"
+                android:textSize="10dp"
+                android:id="@+id/textViewTelServ"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewEmailServ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="E-mail"
+                android:textColor="@color/black"
+                android:textSize="12dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Serviço"
+                android:textSize="12dp"
+                android:textColor="@color/black"
+                android:id="@+id/textViewServico"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_weight="2"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:text="Valor"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:id="@+id/textViewValor"/>
+
+            <TextView
+                android:layout_marginTop="3dp"
+                android:layout_weight="1"
+                android:layout_width="1dp"
+                android:paddingLeft="5dp"
+                android:textColor="@color/black"
+                android:layout_height="match_parent"
+                android:text="Prazo"
+                android:textSize="10dp"
+                android:id="@+id/textViewDt"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

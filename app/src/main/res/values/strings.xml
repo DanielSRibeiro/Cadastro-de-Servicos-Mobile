@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">TechOneHub</string>
+    <string-array name="Servico">
+        <item>Todos os Serviços</item>
+        <item>Manutenção de Sistema</item>
+        <item>Desenvolvimento de Sistema</item>
+        <item>Criação de Desing</item>
+    </string-array>
+    <string-array name="Sistema">
+        <item>Todos os Sistemas</item>
+        <item>Desktop</item>
+        <item>Mobile</item>
+        <item>Web</item>
+    </string-array>
 </resources>

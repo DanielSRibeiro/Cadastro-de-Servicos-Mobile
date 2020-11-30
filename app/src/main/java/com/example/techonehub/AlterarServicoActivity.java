@@ -9,9 +9,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,54 +24,67 @@ import com.example.techonehub.Dto.DtoServico;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
-import java.time.DateTimeException;
-import java.time.Year;
 import java.util.Calendar;
 
-public class CadastrarServicoActivity extends AppCompatActivity {
+public class AlterarServicoActivity extends AppCompatActivity {
 
     Calendar cal = Calendar.getInstance();
     int ano = cal.get(Calendar.YEAR);
     int mes = cal.get(Calendar.MONTH);
     int dia = cal.get(Calendar.DAY_OF_MONTH);
     String data = dia+ "/"+ (1+mes)+"/"+ano;
-    String Prazo;
+    String prazo;
     DatePickerDialog.OnDateSetListener onDateSetListener;
 
-
+    int id;
     double valor;
     DtoServico dtoServico = new DtoServico();
-    DaoTechOneHub daoTechOneHub = new DaoTechOneHub(CadastrarServicoActivity.this);
+    DaoTechOneHub daoTechOneHub = new DaoTechOneHub(AlterarServicoActivity.this);
     ImageView imageViewCall, imagemViewBack;
-    Button buttonCadastrar;
+    Button buttonAlterar;
     Spinner spinnerServico, spinnerSistema;
     String Sistema, Servico;
-    EditText    editTextDescricao, editTextN, editTextRua,
-                editTextCep, editTextTel, editTextEmail, editTextCNPJ,
-                editTextCpf, editTextNome;
+    EditText editTextDescricao, editTextTel, editTextEmail,
+            editTextCNPJ, editTextCpf, editTextNome,
+            editTextEndereco, editTextValor;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastrar_servico);
+        setContentView(R.layout.activity_alterar_servico);
 
-        imageViewCall = findViewById(R.id.imageViewCallCadastrarServico);
-        imagemViewBack = findViewById(R.id.imageViewBackCadastrarServico);
-        buttonCadastrar = findViewById(R.id.buttonCadastrarServico);
-        editTextDescricao = findViewById(R.id.editTextDescricao);
-        spinnerSistema = findViewById(R.id.SpinnerSistema);
-        spinnerServico = findViewById(R.id.SpinnerServico);
-        editTextN = findViewById(R.id.editTextNEmpresa);
-        editTextRua = findViewById(R.id.editTextRuaServico);
-        editTextCep = findViewById(R.id.editTextCepServico);
-        editTextTel = findViewById(R.id.editTextTelServico);
-        editTextEmail = findViewById(R.id.editTextEmailServico);
-        editTextCNPJ = findViewById(R.id.editTextCNPJServico);
-        editTextCpf = findViewById(R.id.editTextCpfServico);
-        editTextNome = findViewById(R.id.editTextNmEmpresa);
+        imageViewCall = findViewById(R.id.imageViewCallAlterarServico);
+        imagemViewBack = findViewById(R.id.imageViewBackAlterarServico);
+        buttonAlterar = findViewById(R.id.buttonAlterarServico);
+        editTextDescricao = findViewById(R.id.editTextDescricaoAlterarServico);
+        spinnerSistema = findViewById(R.id.SpinnerSistemaAlterarServico);
+        spinnerServico = findViewById(R.id.SpinnerAlterarServico);
+        editTextEndereco = findViewById(R.id.editTextEnderecoAlterarServico);
+        editTextTel = findViewById(R.id.editTextTelAlterarServico);
+        editTextEmail = findViewById(R.id.editTextEmailAlterarServico);
+        editTextCNPJ = findViewById(R.id.editTextCNPJAlterarServico);
+        editTextCpf = findViewById(R.id.editTextCpfAlterarServico);
+        editTextNome = findViewById(R.id.editTextNmEmpresaAlterarServico);
+        editTextValor = findViewById(R.id.editTextValorAlterarServico);
 
-        buttonCadastrar.setOnClickListener(new View.OnClickListener() {
+        Bundle bundle = getIntent().getExtras();
+        id = bundle.getInt("id");
+        editTextNome.setText(bundle.getString("nome"));
+        editTextCpf.setText(bundle.getString("cpf"));
+        editTextCNPJ.setText(bundle.getString("cnpj"));
+        editTextEmail.setText(bundle.getString("email"));
+        editTextTel.setText(bundle.getString("tel"));
+        editTextEndereco.setText(bundle.getString("ende"));
+        editTextDescricao.setText(bundle.getString("desc"));
+        editTextValor.setText(""+bundle.getDouble("valor"));
+//        spinnerServico.setText(bundle.getString("servico"));
+//        spinnerSistema.setText(bundle.getString("sistema"));
+        data = bundle.getString("data");
+        prazo = bundle.getString("prazo");
+
+        
+        buttonAlterar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 IfElse();
@@ -85,26 +96,26 @@ public class CadastrarServicoActivity extends AppCompatActivity {
             public void onDateSet(DatePicker view, int year, int month, int day) {
 
                 if(month >= 9 && day >9){
-                    Prazo = day+"/"+(1+month)+"/"+year;
+                    prazo = day+"/"+(1+month)+"/"+year;
                 }
                 else if(month <= 8 && day >9){
-                    Prazo = day+"/"+"0"+(1+month)+"/"+year;
+                    prazo = day+"/"+"0"+(1+month)+"/"+year;
                 }
                 else if(month > 8 && day < 10){
-                    Prazo = "0"+day+"/"+(1+month)+"/"+year;
+                    prazo = "0"+day+"/"+(1+month)+"/"+year;
                 }
                 else {
-                    Prazo = "0"+day+"/"+"0"+(1+month)+"/"+year;
+                    prazo = "0"+day+"/"+"0"+(1+month)+"/"+year;
                 }
 
                 if(ano > year){
-                    Toast.makeText(CadastrarServicoActivity.this, "Não tem como voltar para o passado. Por Favor coloca um Ano que ainda nao passou", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AlterarServicoActivity.this, "Não tem como voltar para o passado. Por Favor coloca um Ano que ainda nao passou", Toast.LENGTH_SHORT).show();
                 }
                 else if(mes > month && ano > year){
-                    Toast.makeText(CadastrarServicoActivity.this, "Não tem como voltar para o passado. Por Favor coloca um Mês que ainda nao passou", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AlterarServicoActivity.this, "Não tem como voltar para o passado. Por Favor coloca um Mês que ainda nao passou", Toast.LENGTH_SHORT).show();
                 }
                 else if(dia > day &&  mes >= month && ano > year){
-                    Toast.makeText(CadastrarServicoActivity.this, "Não tem como voltar para o passado. Por Favor coloca um dia que ainda nao passou", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AlterarServicoActivity.this, "Não tem como voltar para o passado. Por Favor coloca um dia que ainda nao passou", Toast.LENGTH_SHORT).show();
                 }
                 else{
 
@@ -112,36 +123,44 @@ public class CadastrarServicoActivity extends AppCompatActivity {
                         if(Sistema.equals("Todos os Sistemas")){
                             dtoServico.setEspc("123456789-01 // 020406080-00 // 003006009-01 // 103050709-01 // 120450780-01");
                             valor = 12300;
+                            editTextValor.setText(""+valor);
                         }
                         else if(Sistema.equals("Mobile")){
                             dtoServico.setEspc("123456789-01");
                             valor = 3450;
+                            editTextValor.setText(""+valor);
                         }
                         else if(Sistema.equals("Web")){
                             dtoServico.setEspc("020406080-00");
                             valor = 2340;
+                            editTextValor.setText(""+valor);
                         }
                         else{
                             dtoServico.setEspc("120450780-01 // 003006009-01 // 103050709-01");
                             valor = 6490;
+                            editTextValor.setText(""+valor);
                         }
                     }
                     else if(Servico.equals("Desenvolvimento de Sistema")){
                         if(Sistema.equals("Todos os Sistemas")){
                             dtoServico.setEspc("123456789-01 // 020406080-00 // 003006009-01 // 103050709-01 // 120450780-01");
                             valor = 11000;
+                            editTextValor.setText(""+valor);
                         }
                         else if(Sistema.equals("Mobile")){
                             dtoServico.setEspc("123456789-01");
                             valor = 3000;
+                            editTextValor.setText(""+valor);
                         }
                         else if(Sistema.equals("Web")){
                             dtoServico.setEspc("020406080-00");
                             valor = 2000;
+                            editTextValor.setText(""+valor);
                         }
                         else{
                             dtoServico.setEspc("120450780-01 // 003006009-01 // 103050709-01");
                             valor = 6000;
+                            editTextValor.setText(""+valor);
                         }
                     }
                     else{
@@ -149,22 +168,26 @@ public class CadastrarServicoActivity extends AppCompatActivity {
                         if(Sistema.equals("Todos os Sistemas")){
                             dtoServico.setEspc("123456789-01 // 020406080-00 // 003006009-01 // 103050709-01 // 120450780-01");
                             valor = 1500;
+                            editTextValor.setText(""+valor);
                         }
                         else if(Sistema.equals("Mobile")){
                             dtoServico.setEspc("123456789-01");
                             valor = 420;
+                            editTextValor.setText(""+valor);
                         }
                         else if(Sistema.equals("Web")){
                             dtoServico.setEspc("020406080-00");
                             valor = 359;
+                            editTextValor.setText(""+valor);
                         }
                         else{
                             dtoServico.setEspc("120450780-01 // 003006009-01 // 103050709-01");
                             valor = 670;
+                            editTextValor.setText(""+valor);
                         }
                     }
 
-                    AlertDialog.Builder msg = new AlertDialog.Builder(CadastrarServicoActivity.this);
+                    AlertDialog.Builder msg = new AlertDialog.Builder(AlterarServicoActivity.this);
                     msg.setMessage("O Valor Total saira por R$"+valor);
                     msg.setNegativeButton("Cancela", null);
                     msg.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -189,14 +212,14 @@ public class CadastrarServicoActivity extends AppCompatActivity {
         imagemViewBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CadastrarServicoActivity.this, ServicoActivity.class);
+                Intent intent = new Intent(AlterarServicoActivity.this, ConsultarServicoActivity.class);
                 startActivity(intent);
             }
         });
+
         Spineer();
         Mascara();
     }
-
     private void Spineer() {
         ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this, R.array.Sistema, android.R.layout.simple_spinner_item);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -238,43 +261,32 @@ public class CadastrarServicoActivity extends AppCompatActivity {
         MaskTextWatcher mtwcpf = new MaskTextWatcher(editTextCpf, smfcpf);
         editTextCpf.addTextChangedListener(mtwcpf);
 
-        SimpleMaskFormatter smfCep = new SimpleMaskFormatter("NNNNN-NNN");
-        MaskTextWatcher mtwCep = new MaskTextWatcher(editTextCep,smfCep);
-        editTextCep.addTextChangedListener(mtwCep);
-
         SimpleMaskFormatter smfCNPJ = new SimpleMaskFormatter("NN.NNN.NNN/NNNN-NN");
         MaskTextWatcher mtwCNPJ = new MaskTextWatcher(editTextCNPJ, smfCNPJ);
         editTextCNPJ.addTextChangedListener(mtwCNPJ);
 
     }
-
     private void IfElse() {
         if(editTextNome.length() < 1){
-            Toast.makeText(CadastrarServicoActivity.this, "É Necessário Preencher o campo Nome", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AlterarServicoActivity.this, "É Necessário Preencher o campo Nome", Toast.LENGTH_SHORT).show();
         }
         else if(editTextCpf.length() != 12){
-            Toast.makeText(CadastrarServicoActivity.this, "O Campo CPF tem que ter 11 digitos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AlterarServicoActivity.this, "O Campo CPF tem que ter 11 digitos", Toast.LENGTH_SHORT).show();
         }
         else if(editTextCNPJ.length() < 18){
-            Toast.makeText(CadastrarServicoActivity.this, "O Campo CNPJ tem que ter 14 digitos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AlterarServicoActivity.this, "O Campo CNPJ tem que ter 14 digitos", Toast.LENGTH_SHORT).show();
         }
         else if(editTextEmail.length() < 5){
-            Toast.makeText(CadastrarServicoActivity.this, "O Campo E-Mail é Necessário estar Preenchido", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AlterarServicoActivity.this, "O Campo E-Mail é Necessário estar Preenchido", Toast.LENGTH_SHORT).show();
         }
         else if(editTextTel.length() < 15){
-            Toast.makeText(CadastrarServicoActivity.this, "O Telefone tem que ter 9 digitos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AlterarServicoActivity.this, "O Telefone tem que ter 9 digitos", Toast.LENGTH_SHORT).show();
         }
-        else if(editTextCep.length() < 9){
-            Toast.makeText(CadastrarServicoActivity.this, "O CEP tem que ter 8 digitos", Toast.LENGTH_SHORT).show();
-        }
-        else if(editTextRua.length() < 2){
-            Toast.makeText(CadastrarServicoActivity.this, "É Necessário Preencher o campo Rua", Toast.LENGTH_SHORT).show();
-        }
-        else if(editTextN.length() < 2){
-            Toast.makeText(CadastrarServicoActivity.this, "è Necessário Informar o Nº", Toast.LENGTH_SHORT).show();
+        else if(editTextEndereco.length() < 3){
+            Toast.makeText(AlterarServicoActivity.this, "É Necessário colocar o seu Endereço(Rua, Nº, CEP)", Toast.LENGTH_SHORT).show();
         }
         else if(editTextDescricao.length() < 5){
-            Toast.makeText(CadastrarServicoActivity.this, "É Necessário fazer uma Descrição sobre o Sistema", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AlterarServicoActivity.this, "É Necessário fazer uma Descrição sobre o Sistema", Toast.LENGTH_SHORT).show();
         }
         else{
             String Cpf = editTextCpf.getText().toString();
@@ -282,14 +294,14 @@ public class CadastrarServicoActivity extends AppCompatActivity {
 
             if(Linha == true){
 
-                DatePickerDialog dialog = new DatePickerDialog(CadastrarServicoActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                    onDateSetListener, ano,mes,dia);
+                DatePickerDialog dialog = new DatePickerDialog(AlterarServicoActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        onDateSetListener, ano,mes,dia);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.setMessage("Defina o prazo desejado");
                 dialog.show();
             }
             else{
-                Toast.makeText(CadastrarServicoActivity.this, "Esse CPF não está Cadastrado!!! É Necessário Cadastrar Primeiro um Cliente", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AlterarServicoActivity.this, "Esse CPF não está Cadastrado!!! É Necessário Cadastrar Primeiro um Cliente", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -299,28 +311,27 @@ public class CadastrarServicoActivity extends AppCompatActivity {
         dtoServico.setCnpj(editTextCNPJ.getText().toString());
         dtoServico.setEmail(editTextEmail.getText().toString());
         dtoServico.setTel(editTextTel.getText().toString());
-        dtoServico.setEnde(editTextRua.getText().toString()+", "+editTextN.getText().toString()+", " +
-                ""+editTextCep.getText().toString());
+        dtoServico.setEnde(editTextEndereco.getText().toString());
         dtoServico.setServico(Servico);
         dtoServico.setSistema(Sistema);
         dtoServico.setDesc(editTextDescricao.getText().toString());
         dtoServico.setDtInicio(data);
-        dtoServico.setDtPrazo(Prazo);
+        dtoServico.setDtPrazo(prazo);
 
         dtoServico.setValor(valor);
 
         try{
-            long Linha = daoTechOneHub.InsertServico(dtoServico);
+            long Linha = daoTechOneHub.Update(dtoServico, id);
 
             if (Linha > 0){
-                Toast.makeText(this, "Serviço Cadastrado com Sucesso!!!", Toast.LENGTH_SHORT).show();
-                AlertDialog.Builder msg = new AlertDialog.Builder(CadastrarServicoActivity.this);
+                Toast.makeText(this, "Alterado com Sucesso!!!", Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder msg = new AlertDialog.Builder(AlterarServicoActivity.this);
                 msg.setMessage("Deseja Voltar para a Tela anterior?");
                 msg.setNegativeButton("Não", null);
                 msg.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(CadastrarServicoActivity.this, ServicoActivity.class);
+                        Intent intent = new Intent(AlterarServicoActivity.this, ConsultarServicoActivity.class);
                         startActivity(intent);
                     }
                 });

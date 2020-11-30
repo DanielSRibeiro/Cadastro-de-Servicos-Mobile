@@ -106,6 +106,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewConsultarServiço"
             android:layout_width="match_parent"
             android:layout_height="102dp"
             android:layout_marginTop="40dp"

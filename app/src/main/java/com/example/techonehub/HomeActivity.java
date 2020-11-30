@@ -12,7 +12,7 @@ import android.widget.ImageView;
 public class HomeActivity extends AppCompatActivity {
 
     CardView cardViewAgenda,cardViewAbout, cardViewConsultar, cardViewCadastrar;
-    ImageView imageViewCall, imagemViewBack;
+    ImageView imageViewCall;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ConsultarClienteActivity">
+    tools:context=".SocioAgendaActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -18,14 +18,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
+        android:id="@+id/constraintLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewCallConsultarCliente">
+        app:layout_constraintTop_toBottomOf="@+id/imageViewCallAgenda">
 
         <ImageView
             android:id="@+id/imageView4"
@@ -39,7 +39,7 @@
             app:layout_constraintTop_toTopOf="@+id/textView2" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
@@ -58,7 +58,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Consultar Cliente"
+        android:text="Agênda dos Sócios"
         android:textColor="@color/white"
         android:textSize="18dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView5"
@@ -74,10 +74,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageViewBackSocioAgenda"
+        android:layout_width="50px"
+        android:layout_height="54px"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewCallSocioAgenda"
+        android:layout_width="50px"
+        android:layout_height="54px"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/call"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:paddingHorizontal="15dp"
         android:layout_marginTop="40dp"
-        android:id="@+id/editTextBuscarCliente"
+        android:id="@+id/editTextBuscarSocioAgenda"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Buscar pelo Nome"
@@ -103,30 +123,10 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:paddingHorizontal="10dp"
-                android:id="@+id/recyclerViewConsultarCliente"
+                android:id="@+id/recyclerViewSocioAgenda"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ImageView
-        android:id="@+id/imageViewBackConsultarCliente"
-        android:layout_width="50px"
-        android:layout_height="54px"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageViewCallConsultarCliente"
-        android:layout_width="50px"
-        android:layout_height="54px"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/call"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

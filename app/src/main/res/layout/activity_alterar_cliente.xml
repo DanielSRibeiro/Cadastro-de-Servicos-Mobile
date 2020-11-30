@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ConsultarClienteActivity">
+    tools:context=".AlterarClienteActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -18,14 +18,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
+        android:id="@+id/constraintLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewCallConsultarCliente">
+        app:layout_constraintTop_toBottomOf="@+id/imageViewCallCadastrarCliente">
 
         <ImageView
             android:id="@+id/imageView4"
@@ -39,7 +39,7 @@
             app:layout_constraintTop_toTopOf="@+id/textView2" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
@@ -58,7 +58,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Consultar Cliente"
+        android:text="Alterar Cliente"
         android:textColor="@color/white"
         android:textSize="18dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView5"
@@ -74,43 +74,79 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:paddingHorizontal="15dp"
-        android:layout_marginTop="40dp"
-        android:id="@+id/editTextBuscarCliente"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Buscar pelo Nome"
+        android:orientation="vertical"
+        android:paddingHorizontal="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView">>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_marginTop="205dp"
-        android:id="@+id/constraintLayout4"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextBuscarCliente">
 
-        <LinearLayout
+        <EditText
+            android:id="@+id/editTextNomeAlterar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            android:layout_height="wrap_content"
+            android:hint="Nome Completo do Cliente"
+            android:inputType="textPersonName" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:paddingHorizontal="10dp"
-                android:id="@+id/recyclerViewConsultarCliente"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/editTextCPFAlterar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="CPF"
+            android:inputType="number"
+            />
+
+        <EditText
+            android:id="@+id/editTextRGAlterar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="RG"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/editTextDataAlterar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Data de Nascimento"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/editTextEmailAlterar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="E-mail do Cliente"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/editTextTelAlterar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Telefone do Cliente"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/editTextEndereco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Endereço"/>
+
+        <Button
+            android:id="@+id/buttonAlterarCliente"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/botaocadastrarcliente"
+            android:layout_marginTop="15dp"
+            android:text="Alterar Cliente"
+            android:textSize="16dp"
+            android:textColor="@color/black"
+            android:typeface="monospace" />
+    </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageViewBackConsultarCliente"
+        android:id="@+id/imageViewBackAlterarCliente"
         android:layout_width="50px"
         android:layout_height="54px"
         android:layout_marginLeft="20dp"
@@ -120,7 +156,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageViewCallConsultarCliente"
+        android:id="@+id/imageViewCallAlterarCliente"
         android:layout_width="50px"
         android:layout_height="54px"
         android:layout_marginTop="20dp"

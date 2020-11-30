@@ -9,18 +9,47 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TechOneHub">
-        <activity android:name=".CadastrarServicoActivity">
-        </activity>
-        <activity android:name=".ServicoActivity" />
-        <activity android:name=".ConsultarClienteActivity" />
-        <activity android:name=".CadastrarClienteActivity" />
-        <activity android:name=".ClienteActivity" />
-        <activity android:name=".AgendaActivity">
-        </activity>
-        <activity android:name=".AboutActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".AlterarServicoActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ConsultarServicoActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".SocioAgendaActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AlterarClienteActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CadastrarServicoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ServicoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConsultarClienteActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CadastrarClienteActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ClienteActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AgendaActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".AboutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
