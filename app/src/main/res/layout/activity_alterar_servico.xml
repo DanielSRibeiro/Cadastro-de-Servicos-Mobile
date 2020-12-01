@@ -95,7 +95,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="CPF do Cliente Cadastrado"
-            android:inputType="number" />
+            android:inputType="number"
+            android:enabled="false"/>
 
         <EditText
             android:id="@+id/editTextCNPJAlterarServico"
