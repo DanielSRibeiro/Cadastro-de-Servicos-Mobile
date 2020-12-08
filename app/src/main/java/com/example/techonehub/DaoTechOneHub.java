@@ -5,12 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.net.UrlQuerySanitizer;
 
 import androidx.annotation.Nullable;
 
 import com.example.techonehub.Dto.DtoCliente;
-import com.example.techonehub.Dto.DtoContrato;
 import com.example.techonehub.Dto.DtoLogin;
 import com.example.techonehub.Dto.DtoServico;
 import com.example.techonehub.Dto.DtoSocio;
@@ -26,7 +24,7 @@ public class DaoTechOneHub extends SQLiteOpenHelper {
     final String CONTRATO = "TBL_CONTRATO";
 
     public DaoTechOneHub(@Nullable Context context) {
-        super(context, "BD_TECHONEHUB2", null, 1);
+        super(context, "TECHONEHUB", null, 1);
     }
 
     @Override
@@ -84,9 +82,7 @@ public class DaoTechOneHub extends SQLiteOpenHelper {
                 "DESCR VARCHAR(80) NOT NULL," +
                 "VALOR DECIMAL(10,2) NOT NULL," +
                 "DT_PRAZO DATE NOT NULL," +
-                "DT_INI DATE NOT NULL," +
-                "FOREIGN KEY(CPF_CLI) REFERENCES "+CLIENTE+"(CPF),"+
-                "FOREIGN KEY(CPF_SOC) REFERENCES "+SOCIO+"(CPF))";
+                "DT_INI DATE NOT NULL)";
         db.execSQL(cm1);
         db.execSQL(cm2);
         db.execSQL(cm3);
@@ -219,24 +215,23 @@ public class DaoTechOneHub extends SQLiteOpenHelper {
         return getWritableDatabase().insert(SERVICO, null, values);
     }
 
-    public long InsertContrato(DtoContrato dtoContrato) {
+    public long InsertContrato(DtoServico dtoServico) {
         ContentValues values = new ContentValues();
-        values.put("CPF_CLI", dtoContrato.getCpf());
-        values.put("CPF_SOC", dtoContrato.getEspc());
-        values.put("NM", dtoContrato.getNm());
-        values.put("CNPJ", dtoContrato.getCnpj());
-        values.put("TEL", dtoContrato.getTel());
-        values.put("ENDE", dtoContrato.getEnde());
-        values.put("EMAIL", dtoContrato.getEmail());
-        values.put("SERVICO", dtoContrato.getServico());
-        values.put("SISTEMA", dtoContrato.getSistema());
-        values.put("DESCR", dtoContrato.getDesc());
-        values.put("VALOR", dtoContrato.getValor());
-        values.put("DT_INI", dtoContrato.getDtInicio());
-        values.put("DT_PRAZO", dtoContrato.getDtPrazo());
+        values.put("CPF_CLI", dtoServico.getCpf());
+        values.put("CPF_SOC", dtoServico.getEspc());
+        values.put("NM", dtoServico.getNm());
+        values.put("CNPJ", dtoServico.getCnpj());
+        values.put("TEL", dtoServico.getTel());
+        values.put("ENDE", dtoServico.getEnde());
+        values.put("EMAIL", dtoServico.getEmail());
+        values.put("SERVICO", dtoServico.getServico());
+        values.put("SISTEMA", dtoServico.getSistema());
+        values.put("DESCR", dtoServico.getDesc());
+        values.put("VALOR", dtoServico.getValor());
+        values.put("DT_INI", dtoServico.getDtInicio());
+        values.put("DT_PRAZO", dtoServico.getDtPrazo());
         return getWritableDatabase().insert(CONTRATO, null, values);
     }
-
     public long Update(DtoCliente dtoCliente, int id) {
         String cm = "ID=?";
         String[] args = {id+""};
