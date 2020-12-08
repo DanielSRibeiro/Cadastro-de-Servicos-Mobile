@@ -10,6 +10,7 @@ import android.net.UrlQuerySanitizer;
 import androidx.annotation.Nullable;
 
 import com.example.techonehub.Dto.DtoCliente;
+import com.example.techonehub.Dto.DtoContrato;
 import com.example.techonehub.Dto.DtoLogin;
 import com.example.techonehub.Dto.DtoServico;
 import com.example.techonehub.Dto.DtoSocio;
@@ -22,9 +23,10 @@ public class DaoTechOneHub extends SQLiteOpenHelper {
     final String SOCIO = "TBL_SOCIO";
     final String LOGIN = "TBL_LOGIN";
     final String SERVICO = "TBL_SERVICO";
+    final String CONTRATO = "TBL_CONTRATO";
 
     public DaoTechOneHub(@Nullable Context context) {
-        super(context, "BD_TECHONEHUB", null, 1);
+        super(context, "BD_TECHONEHUB2", null, 1);
     }
 
     @Override
@@ -67,10 +69,29 @@ public class DaoTechOneHub extends SQLiteOpenHelper {
                 "DT_INI DATE NOT NULL," +
                 "FOREIGN KEY(CPF_CLI) REFERENCES "+CLIENTE+"(CPF),"+
                 "FOREIGN KEY(CPF_SOC) REFERENCES "+SOCIO+"(CPF))";
+
+        String cm5 = "CREATE TABLE " + CONTRATO + " (" +
+                "ID INTEGER PRIMARY KEY," +
+                "CPF_CLI VARCHAR(12) NOT NULL," +
+                "CPF_SOC VARCHAR(100) NOT NULL," +
+                "NM VARCHAR(80) NOT NULL," +
+                "CNPJ VARCHAR(18) NOT NULL," +
+                "TEL VARCHAR(15) NOT NULL," +
+                "ENDE VARCHAR(130) NOT NULL," +
+                "EMAIL VARCHAR(80) NOT NULL," +
+                "SERVICO VARCHAR(80) NOT NULL," +
+                "SISTEMA VARCHAR(80) NOT NULL," +
+                "DESCR VARCHAR(80) NOT NULL," +
+                "VALOR DECIMAL(10,2) NOT NULL," +
+                "DT_PRAZO DATE NOT NULL," +
+                "DT_INI DATE NOT NULL," +
+                "FOREIGN KEY(CPF_CLI) REFERENCES "+CLIENTE+"(CPF),"+
+                "FOREIGN KEY(CPF_SOC) REFERENCES "+SOCIO+"(CPF))";
         db.execSQL(cm1);
         db.execSQL(cm2);
         db.execSQL(cm3);
         db.execSQL(cm4);
+        db.execSQL(cm5);
     }
 
     @Override
@@ -196,6 +217,24 @@ public class DaoTechOneHub extends SQLiteOpenHelper {
         values.put("DT_INI", dtoServico.getDtInicio());
         values.put("DT_PRAZO", dtoServico.getDtPrazo());
         return getWritableDatabase().insert(SERVICO, null, values);
+    }
+
+    public long InsertContrato(DtoContrato dtoContrato) {
+        ContentValues values = new ContentValues();
+        values.put("CPF_CLI", dtoContrato.getCpf());
+        values.put("CPF_SOC", dtoContrato.getEspc());
+        values.put("NM", dtoContrato.getNm());
+        values.put("CNPJ", dtoContrato.getCnpj());
+        values.put("TEL", dtoContrato.getTel());
+        values.put("ENDE", dtoContrato.getEnde());
+        values.put("EMAIL", dtoContrato.getEmail());
+        values.put("SERVICO", dtoContrato.getServico());
+        values.put("SISTEMA", dtoContrato.getSistema());
+        values.put("DESCR", dtoContrato.getDesc());
+        values.put("VALOR", dtoContrato.getValor());
+        values.put("DT_INI", dtoContrato.getDtInicio());
+        values.put("DT_PRAZO", dtoContrato.getDtPrazo());
+        return getWritableDatabase().insert(CONTRATO, null, values);
     }
 
     public long Update(DtoCliente dtoCliente, int id) {

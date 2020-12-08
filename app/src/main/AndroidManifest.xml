@@ -22,7 +22,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".CadastrarServicoActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name=".ServicoActivity"
             android:screenOrientation="portrait" />
@@ -31,7 +32,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".CadastrarClienteActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name=".ClienteActivity"
             android:screenOrientation="portrait" />

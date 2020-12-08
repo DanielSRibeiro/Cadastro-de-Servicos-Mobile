@@ -33,7 +33,7 @@ public class AlterarServicoActivity extends AppCompatActivity {
     int mes = cal.get(Calendar.MONTH);
     int dia = cal.get(Calendar.DAY_OF_MONTH);
     String data = dia+ "/"+ (1+mes)+"/"+ano;
-    String prazo;
+    String Prazo;
     DatePickerDialog.OnDateSetListener onDateSetListener;
 
     int id;
@@ -81,7 +81,7 @@ public class AlterarServicoActivity extends AppCompatActivity {
 //        spinnerServico.setText(bundle.getString("servico"));
 //        spinnerSistema.setText(bundle.getString("sistema"));
         data = bundle.getString("data");
-        prazo = bundle.getString("prazo");
+        Prazo = bundle.getString("Prazo");
 
         
         buttonAlterar.setOnClickListener(new View.OnClickListener() {
@@ -95,26 +95,31 @@ public class AlterarServicoActivity extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
 
+                int me= 1+mes;
                 if(month >= 9 && day >9){
-                    prazo = day+"/"+(1+month)+"/"+year;
+                    month += 1;
+                    Prazo = day+"/"+month+"/"+year;
                 }
                 else if(month <= 8 && day >9){
-                    prazo = day+"/"+"0"+(1+month)+"/"+year;
+                    month += 1;
+                    Prazo = day+"/"+"0"+month+"/"+year;
                 }
                 else if(month > 8 && day < 10){
-                    prazo = "0"+day+"/"+(1+month)+"/"+year;
+                    month += 1;
+                    Prazo = "0"+day+"/"+month+"/"+year;
                 }
                 else {
-                    prazo = "0"+day+"/"+"0"+(1+month)+"/"+year;
+                    month += 1;
+                    Prazo = "0"+day+"/"+"0"+month+"/"+year;
                 }
 
                 if(ano > year){
                     Toast.makeText(AlterarServicoActivity.this, "Não tem como voltar para o passado. Por Favor coloca um Ano que ainda nao passou", Toast.LENGTH_SHORT).show();
                 }
-                else if(mes > month && ano > year){
+                else if(me > month && ano >= year){
                     Toast.makeText(AlterarServicoActivity.this, "Não tem como voltar para o passado. Por Favor coloca um Mês que ainda nao passou", Toast.LENGTH_SHORT).show();
                 }
-                else if(dia > day &&  mes >= month && ano > year){
+                else if(dia > day &&  me >= month && ano >= year){
                     Toast.makeText(AlterarServicoActivity.this, "Não tem como voltar para o passado. Por Favor coloca um dia que ainda nao passou", Toast.LENGTH_SHORT).show();
                 }
                 else{
@@ -297,7 +302,7 @@ public class AlterarServicoActivity extends AppCompatActivity {
                 DatePickerDialog dialog = new DatePickerDialog(AlterarServicoActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                         onDateSetListener, ano,mes,dia);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.setMessage("Defina o prazo desejado");
+                dialog.setMessage("Defina o Prazo desejado");
                 dialog.show();
             }
             else{
@@ -316,7 +321,7 @@ public class AlterarServicoActivity extends AppCompatActivity {
         dtoServico.setSistema(Sistema);
         dtoServico.setDesc(editTextDescricao.getText().toString());
         dtoServico.setDtInicio(data);
-        dtoServico.setDtPrazo(prazo);
+        dtoServico.setDtPrazo(Prazo);
 
         dtoServico.setValor(valor);
 

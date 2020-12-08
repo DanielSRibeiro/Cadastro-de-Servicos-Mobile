@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.techonehub.Dto.DtoContrato;
 import com.example.techonehub.Dto.DtoServico;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
@@ -43,6 +44,7 @@ public class CadastrarServicoActivity extends AppCompatActivity {
 
     double valor;
     DtoServico dtoServico = new DtoServico();
+    DtoContrato dtoContrato = new DtoContrato();
     DaoTechOneHub daoTechOneHub = new DaoTechOneHub(CadastrarServicoActivity.this);
     ImageView imageViewCall, imagemViewBack;
     Button buttonCadastrar;
@@ -84,26 +86,31 @@ public class CadastrarServicoActivity extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
 
+                int me= 1+mes;
                 if(month >= 9 && day >9){
-                    Prazo = day+"/"+(1+month)+"/"+year;
+                    month += 1;
+                    Prazo = day+"/"+month+"/"+year;
                 }
                 else if(month <= 8 && day >9){
-                    Prazo = day+"/"+"0"+(1+month)+"/"+year;
+                    month += 1;
+                    Prazo = day+"/"+"0"+month+"/"+year;
                 }
                 else if(month > 8 && day < 10){
-                    Prazo = "0"+day+"/"+(1+month)+"/"+year;
+                    month += 1;
+                    Prazo = "0"+day+"/"+month+"/"+year;
                 }
                 else {
-                    Prazo = "0"+day+"/"+"0"+(1+month)+"/"+year;
+                    month += 1;
+                    Prazo = "0"+day+"/"+"0"+month+"/"+year;
                 }
 
                 if(ano > year){
                     Toast.makeText(CadastrarServicoActivity.this, "Não tem como voltar para o passado. Por Favor coloca um Ano que ainda nao passou", Toast.LENGTH_SHORT).show();
                 }
-                else if(mes > month && ano > year){
+                else if(me > month && ano >= year){
                     Toast.makeText(CadastrarServicoActivity.this, "Não tem como voltar para o passado. Por Favor coloca um Mês que ainda nao passou", Toast.LENGTH_SHORT).show();
                 }
-                else if(dia > day &&  mes >= month && ano > year){
+                else if(dia > day &&  me >= month && ano >= year){
                     Toast.makeText(CadastrarServicoActivity.this, "Não tem como voltar para o passado. Por Favor coloca um dia que ainda nao passou", Toast.LENGTH_SHORT).show();
                 }
                 else{
@@ -306,13 +313,27 @@ public class CadastrarServicoActivity extends AppCompatActivity {
         dtoServico.setDesc(editTextDescricao.getText().toString());
         dtoServico.setDtInicio(data);
         dtoServico.setDtPrazo(Prazo);
-
         dtoServico.setValor(valor);
+
+        dtoContrato.setNm(editTextNome.getText().toString());
+        dtoContrato.setCpf(editTextCpf.getText().toString());
+        dtoContrato.setCnpj(editTextCNPJ.getText().toString());
+        dtoContrato.setEmail(editTextEmail.getText().toString());
+        dtoContrato.setTel(editTextTel.getText().toString());
+        dtoContrato.setEnde(editTextRua.getText().toString()+", "+editTextN.getText().toString()+", " +
+                ""+editTextCep.getText().toString());
+        dtoContrato.setServico(Servico);
+        dtoContrato.setSistema(Sistema);
+        dtoContrato.setDesc(editTextDescricao.getText().toString());
+        dtoContrato.setDtInicio(data);
+        dtoContrato.setDtPrazo(Prazo);
+        dtoContrato.setValor(valor);
 
         try{
             long Linha = daoTechOneHub.InsertServico(dtoServico);
+//            long Linha1 = daoTechOneHub.InsertContrato(dtoContrato);
 
-            if (Linha > 0){
+            if (Linha > 0 ){
                 Toast.makeText(this, "Serviço Cadastrado com Sucesso!!!", Toast.LENGTH_SHORT).show();
                 AlertDialog.Builder msg = new AlertDialog.Builder(CadastrarServicoActivity.this);
                 msg.setMessage("Deseja Voltar para a Tela anterior?");
