@@ -1,5 +1,10 @@
-Projeto final do 2º Semestre da ETEC foi realizado um aplicativo de uma empresa fictícia Nesse aplicativo é possível cadastrar e consultar um novo Cliente e Serviço podendo ver as Agendas do Sócios.
+Projeto final do 2º Semestre da ETEC 
 
--Foi Utilizado SQLite para realizar o CRUD. Usando o RecyclerView para mostrar os Clientes e os Serviços que já realizaram o cadastro.
+Foi realizado um aplicativo de uma empresa fictícia nesse aplicativo é possível Cadastrar, Consultar, Alterar e Deletar um Cliente e Serviço podendo ver as Agendas dos Sócios.
 
--Para realizar o Login é necessário colocar o Nome: Tech Senha:123456
+- Foi Utilizado SQLite para realizar o CRUD. Usando o RecyclerView para mostrar os Clientes e os Serviços que já realizaram o cadastro.
+
+Login:label:
+
+- Username da tela de Login é Tech
+- Senha é 123456
