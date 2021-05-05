@@ -17,7 +17,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.techonehub.Dto.DtoCliente;
+import com.example.techonehub.model.Dto.DtoCliente;
+import com.example.techonehub.model.DaoTechOneHub;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
@@ -45,18 +46,7 @@ public class CadastrarClienteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastrar_cliente);
 
 
-        buttonCadastrar = findViewById(R.id.buttonCadastrarCliente);
-        imageViewBack = findViewById(R.id.imageViewBackCadastrarCliente);
-        imageViewCall = findViewById(R.id.imageViewCallCadastrarCliente);
-        editTextNome = findViewById(R.id.editTextNome);
-        editTextCPF = findViewById(R.id.editTextCPF);
-        editTextRG = findViewById(R.id.editTextRG);
-        editTexttel = findViewById(R.id.editTextTel);
-        editTextEmail = findViewById(R.id.editTextEmail);
-        editTextRua = findViewById(R.id.editTextRua);
-        editTextCEP = findViewById(R.id.editTextCEP);
-        editTextNCasa = findViewById(R.id.editTextNCasa);
-        editTextData = findViewById(R.id.editTextData);
+        initView();
 
         imageViewCall.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,6 +142,21 @@ public class CadastrarClienteActivity extends AppCompatActivity {
         Mascara();
     }
 
+    private void initView() {
+        buttonCadastrar = findViewById(R.id.buttonCadastrarCliente);
+        imageViewBack = findViewById(R.id.imageViewBackCadastrarCliente);
+        imageViewCall = findViewById(R.id.imageViewCallCadastrarCliente);
+        editTextNome = findViewById(R.id.editTextNome);
+        editTextCPF = findViewById(R.id.editTextCPF);
+        editTextRG = findViewById(R.id.editTextRG);
+        editTexttel = findViewById(R.id.editTextTel);
+        editTextEmail = findViewById(R.id.editTextEmail);
+        editTextRua = findViewById(R.id.editTextRua);
+        editTextCEP = findViewById(R.id.editTextCEP);
+        editTextNCasa = findViewById(R.id.editTextNCasa);
+        editTextData = findViewById(R.id.editTextData);
+    }
+
     private void Inserir() {
         dtoCliente.setNm(editTextNome.getText().toString());
         dtoCliente.setCpf(editTextCPF.getText().toString());
@@ -188,6 +193,7 @@ public class CadastrarClienteActivity extends AppCompatActivity {
             Toast.makeText(CadastrarClienteActivity.this, "Erro ao Inserir "+ex.toString(), Toast.LENGTH_SHORT).show();
         }
     }
+
     private void Mascara() {
 
         SimpleMaskFormatter smf = new SimpleMaskFormatter("(NN) NNNNN-NNNN");

@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.techonehub.Dto.DtoServico;
+import com.example.techonehub.model.Dto.DtoServico;
 import com.example.techonehub.R;
 
 import java.util.ArrayList;
@@ -16,15 +16,17 @@ import java.util.ArrayList;
 public class MeuAdapterServico extends RecyclerView.Adapter<MeuAdapterServico.MeuViewHolder> {
 
     ArrayList<DtoServico> arrayList;
-    public MeuAdapterServico(ArrayList<DtoServico> arrayListDtoServico) {
+    OnClickItemListener listener;
+    public MeuAdapterServico(ArrayList<DtoServico> arrayListDtoServico, OnClickItemListener listener) {
         this.arrayList = arrayListDtoServico;
+        this.listener = listener;
     }
 
     @NonNull
     @Override
     public MeuViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.meuadapter_servico, parent, false);
-        return new MeuViewHolder(view);
+        return new MeuViewHolder(view, listener);
     }
 
     @Override
@@ -46,7 +48,7 @@ public class MeuAdapterServico extends RecyclerView.Adapter<MeuAdapterServico.Me
 
         TextView textViewValor, textViewEmail ,textViewEmpresa, textViewTel, textViewDt, textViewServico;
 
-        public MeuViewHolder(@NonNull View itemView) {
+        public MeuViewHolder(@NonNull View itemView, OnClickItemListener listener) {
             super(itemView);
 
             textViewEmpresa = itemView.findViewById(R.id.textViewEmpresa);
@@ -55,6 +57,20 @@ public class MeuAdapterServico extends RecyclerView.Adapter<MeuAdapterServico.Me
             textViewValor = itemView.findViewById(R.id.textViewValor);
             textViewDt = itemView.findViewById(R.id.textViewDt);
             textViewServico = itemView.findViewById(R.id.textViewServico);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onClick(getAdapterPosition());
+                }
+            });
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    listener.onLongClick(getAdapterPosition());
+                    return false;
+                }
+            });
         }
     }
 }

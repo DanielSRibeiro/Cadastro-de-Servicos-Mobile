@@ -20,7 +20,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.techonehub.Dto.DtoServico;
+import com.example.techonehub.model.Dto.DtoServico;
+import com.example.techonehub.model.DaoTechOneHub;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
@@ -54,19 +55,7 @@ public class AlterarServicoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alterar_servico);
 
-        imageViewCall = findViewById(R.id.imageViewCallAlterarServico);
-        imagemViewBack = findViewById(R.id.imageViewBackAlterarServico);
-        buttonAlterar = findViewById(R.id.buttonAlterarServico);
-        editTextDescricao = findViewById(R.id.editTextDescricaoAlterarServico);
-        spinnerSistema = findViewById(R.id.SpinnerSistemaAlterarServico);
-        spinnerServico = findViewById(R.id.SpinnerAlterarServico);
-        editTextEndereco = findViewById(R.id.editTextEnderecoAlterarServico);
-        editTextTel = findViewById(R.id.editTextTelAlterarServico);
-        editTextEmail = findViewById(R.id.editTextEmailAlterarServico);
-        editTextCNPJ = findViewById(R.id.editTextCNPJAlterarServico);
-        editTextCpf = findViewById(R.id.editTextCpfAlterarServico);
-        editTextNome = findViewById(R.id.editTextNmEmpresaAlterarServico);
-        editTextValor = findViewById(R.id.editTextValorAlterarServico);
+        initView();
 
         Bundle bundle = getIntent().getExtras();
         id = bundle.getInt("id");
@@ -91,6 +80,7 @@ public class AlterarServicoActivity extends AppCompatActivity {
             }
 
         });
+
         onDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
@@ -214,6 +204,7 @@ public class AlterarServicoActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         imagemViewBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -225,6 +216,23 @@ public class AlterarServicoActivity extends AppCompatActivity {
         Spineer();
         Mascara();
     }
+
+    private void initView() {
+        imageViewCall = findViewById(R.id.imageViewCallAlterarServico);
+        imagemViewBack = findViewById(R.id.imageViewBackAlterarServico);
+        buttonAlterar = findViewById(R.id.buttonAlterarServico);
+        editTextDescricao = findViewById(R.id.editTextDescricaoAlterarServico);
+        spinnerSistema = findViewById(R.id.SpinnerSistemaAlterarServico);
+        spinnerServico = findViewById(R.id.SpinnerAlterarServico);
+        editTextEndereco = findViewById(R.id.editTextEnderecoAlterarServico);
+        editTextTel = findViewById(R.id.editTextTelAlterarServico);
+        editTextEmail = findViewById(R.id.editTextEmailAlterarServico);
+        editTextCNPJ = findViewById(R.id.editTextCNPJAlterarServico);
+        editTextCpf = findViewById(R.id.editTextCpfAlterarServico);
+        editTextNome = findViewById(R.id.editTextNmEmpresaAlterarServico);
+        editTextValor = findViewById(R.id.editTextValorAlterarServico);
+    }
+
     private void Spineer() {
         ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this, R.array.Sistema, android.R.layout.simple_spinner_item);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -256,6 +264,7 @@ public class AlterarServicoActivity extends AppCompatActivity {
             }
         });
     }
+
     private void Mascara() {
 
         SimpleMaskFormatter smf = new SimpleMaskFormatter("(NN) NNNNN-NNNN");
@@ -271,6 +280,7 @@ public class AlterarServicoActivity extends AppCompatActivity {
         editTextCNPJ.addTextChangedListener(mtwCNPJ);
 
     }
+
     private void IfElse() {
         if(editTextNome.length() < 1){
             Toast.makeText(AlterarServicoActivity.this, "É Necessário Preencher o campo Nome", Toast.LENGTH_SHORT).show();
@@ -310,6 +320,7 @@ public class AlterarServicoActivity extends AppCompatActivity {
             }
         }
     }
+
     private void Inserir() {
         dtoServico.setNm(editTextNome.getText().toString());
         dtoServico.setCpf(editTextCpf.getText().toString());

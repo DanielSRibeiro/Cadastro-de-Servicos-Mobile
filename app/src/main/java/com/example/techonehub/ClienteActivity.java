@@ -11,51 +11,31 @@ import android.widget.ImageView;
 
 public class ClienteActivity extends AppCompatActivity {
 
-    ImageView imageViewCall, imagemViewBack;
-    CardView cardViewCadastrarCliente, cardViewConsultarCliente;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente);
 
-        cardViewCadastrarCliente = findViewById(R.id.cardViewCadastrarCliente);
-        imageViewCall = findViewById(R.id.imageViewCallCliente);
-        imagemViewBack = findViewById(R.id.imageViewBackCliente);
-        cardViewConsultarCliente = findViewById(R.id.cardViewConsultarCliente);
+    }
 
-        cardViewConsultarCliente.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ClienteActivity.this, ConsultarClienteActivity.class);
-                startActivity(intent);
-            }
-        });
+    public void onClickVoltar(View view) {
+        Intent intent = new Intent(ClienteActivity.this, HomeActivity.class);
+        startActivity(intent);
+    }
 
-        cardViewCadastrarCliente.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ClienteActivity.this, CadastrarClienteActivity.class);
-                startActivity(intent);
-            }
-        });
+    public void onClickTelefone(View view) {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:(11) 99472-9075"));
+        startActivity(intent);
+    }
 
+    public void onClickConsultarCliente(View view) {
+        Intent intent = new Intent(ClienteActivity.this, ConsultarClienteActivity.class);
+        startActivity(intent);
+    }
 
-        imageViewCall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:(11) 99472-9075"));
-                startActivity(intent);
-            }
-        });
-
-        imagemViewBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ClienteActivity.this, HomeActivity.class);
-                startActivity(intent);
-            }
-        });
+    public void onClickCadastrarCliente(View view) {
+        Intent intent = new Intent(ClienteActivity.this, CadastrarClienteActivity.class);
+        startActivity(intent);
     }
 }

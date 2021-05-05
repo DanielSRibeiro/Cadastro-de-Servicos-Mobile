@@ -12,48 +12,31 @@ import android.widget.Toast;
 
 public class ServicoActivity extends AppCompatActivity {
 
-    ImageView imageViewCall, imagemViewBack;
-    CardView cardViewCadastrarServiço, cardViewConsultarServiço;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_servico);
 
-        imagemViewBack = findViewById(R.id.imageViewBackServico);
-        cardViewCadastrarServiço = findViewById(R.id.cardViewCadastrarServiço);
-        imageViewCall = findViewById(R.id.imageViewCallServico);
-        cardViewConsultarServiço = findViewById(R.id.cardViewConsultarServiço);
+    }
 
-        imageViewCall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:(11) 99472-9075"));
-                startActivity(intent);
-            }
-        });
-        cardViewCadastrarServiço.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ServicoActivity.this, CadastrarServicoActivity.class);
-                startActivity(intent);
-            }
-        });
+    public void onClickVoltar(View view) {
+        Intent intent = new Intent(ServicoActivity.this, HomeActivity.class);
+        startActivity(intent);
+    }
 
-        cardViewConsultarServiço.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ServicoActivity.this, ConsultarServicoActivity.class);
-                startActivity(intent);
-            }
-        });
-        imagemViewBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ServicoActivity.this, HomeActivity.class);
-                startActivity(intent);
-            }
-        });
+    public void onClickTelefone(View view) {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:(11) 99472-9075"));
+        startActivity(intent);
+    }
+
+    public void onClickCadastrarServico(View view) {
+        Intent intent = new Intent(ServicoActivity.this, CadastrarServicoActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickConsultarServico(View view) {
+        Intent intent = new Intent(ServicoActivity.this, ConsultarServicoActivity.class);
+        startActivity(intent);
     }
 }

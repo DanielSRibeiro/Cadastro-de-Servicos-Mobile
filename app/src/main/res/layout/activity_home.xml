@@ -91,7 +91,8 @@
             app:layout_constraintTop_toTopOf="parent"
             android:elevation="25dp"
             app:cardCornerRadius="5dp"
-            app:cardBackgroundColor="@color/dasboard">
+            app:cardBackgroundColor="@color/dasboard"
+            android:onClick="onClickAgenda">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -111,7 +112,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewCadastrar"
+            android:id="@+id/cardViewCliente"
             android:layout_width="137dp"
             android:layout_height="170dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -120,7 +121,8 @@
             app:layout_constraintTop_toTopOf="parent"
             android:elevation="25dp"
             app:cardCornerRadius="5dp"
-            app:cardBackgroundColor="@color/dasboard">
+            app:cardBackgroundColor="@color/dasboard"
+            android:onClick="onClickCliente">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -140,7 +142,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewConsultar"
+            android:id="@+id/cardViewServico"
             android:layout_width="137dp"
             android:layout_height="170dp"
             android:layout_marginBottom="4dp"
@@ -148,7 +150,8 @@
             app:cardCornerRadius="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:cardBackgroundColor="@color/dasboard">
+            app:cardBackgroundColor="@color/dasboard"
+            android:onClick="onClickServico">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -168,7 +171,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewAbout"
+            android:id="@+id/cardViewSobre"
             android:layout_width="137dp"
             android:layout_height="170dp"
             android:layout_marginBottom="4dp"
@@ -176,7 +179,8 @@
             app:cardCornerRadius="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:cardBackgroundColor="@color/dasboard">
+            app:cardBackgroundColor="@color/dasboard"
+            android:onClick="onClickSobre">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -205,7 +209,8 @@
         android:layout_marginRight="20dp"
         android:background="@drawable/call"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="onClickTelefone"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,5 @@
 package com.example.techonehub;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,8 +10,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.ContextMenu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -20,12 +17,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.techonehub.Dto.DtoCliente;
+import com.example.techonehub.model.Dto.DtoCliente;
+import com.example.techonehub.model.DaoTechOneHub;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class AlterarClienteActivity extends AppCompatActivity {
 
@@ -180,6 +177,7 @@ public class AlterarClienteActivity extends AppCompatActivity {
             Toast.makeText(AlterarClienteActivity.this, "Erro ao Inserir "+ex.toString(), Toast.LENGTH_SHORT).show();
         }
     }
+
     private void Mascara() {
 
         SimpleMaskFormatter smf = new SimpleMaskFormatter("(NN) NNNNN-NNNN");

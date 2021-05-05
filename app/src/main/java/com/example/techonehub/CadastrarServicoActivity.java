@@ -20,7 +20,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.techonehub.Dto.DtoServico;
+import com.example.techonehub.model.Dto.DtoServico;
+import com.example.techonehub.model.DaoTechOneHub;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
@@ -250,49 +251,49 @@ public class CadastrarServicoActivity extends AppCompatActivity {
     }
 
     private void IfElse() {
-//        if(editTextNome.length() < 1){
-//            Toast.makeText(CadastrarServicoActivity.this, "É Necessário Preencher o campo Nome", Toast.LENGTH_SHORT).show();
-//        }
-//        else if(editTextCpf.length() != 12){
-//            Toast.makeText(CadastrarServicoActivity.this, "O Campo CPF tem que ter 11 digitos", Toast.LENGTH_SHORT).show();
-//        }
-//        else if(editTextCNPJ.length() < 18){
-//            Toast.makeText(CadastrarServicoActivity.this, "O Campo CNPJ tem que ter 14 digitos", Toast.LENGTH_SHORT).show();
-//        }
-//        else if(editTextEmail.length() < 5){
-//            Toast.makeText(CadastrarServicoActivity.this, "O Campo E-Mail é Necessário estar Preenchido", Toast.LENGTH_SHORT).show();
-//        }
-//        else if(editTextTel.length() < 15){
-//            Toast.makeText(CadastrarServicoActivity.this, "O Telefone tem que ter 9 digitos", Toast.LENGTH_SHORT).show();
-//        }
-//        else if(editTextCep.length() < 9){
-//            Toast.makeText(CadastrarServicoActivity.this, "O CEP tem que ter 8 digitos", Toast.LENGTH_SHORT).show();
-//        }
-//        else if(editTextRua.length() < 2){
-//            Toast.makeText(CadastrarServicoActivity.this, "É Necessário Preencher o campo Rua", Toast.LENGTH_SHORT).show();
-//        }
-//        else if(editTextN.length() < 2){
-//            Toast.makeText(CadastrarServicoActivity.this, "è Necessário Informar o Nº", Toast.LENGTH_SHORT).show();
-//        }
-//        else if(editTextDescricao.length() < 5){
-//            Toast.makeText(CadastrarServicoActivity.this, "É Necessário fazer uma Descrição sobre o Sistema", Toast.LENGTH_SHORT).show();
-//        }
-//        else{
-//            String Cpf = editTextCpf.getText().toString();
-//            boolean Linha = daoTechOneHub.SelectCPF(Cpf);
-//
-//            if(Linha == true){
+        if(editTextNome.length() < 1){
+            Toast.makeText(CadastrarServicoActivity.this, "É Necessário Preencher o campo Nome", Toast.LENGTH_SHORT).show();
+        }
+        else if(editTextCpf.length() != 12){
+            Toast.makeText(CadastrarServicoActivity.this, "O Campo CPF tem que ter 11 digitos", Toast.LENGTH_SHORT).show();
+        }
+        else if(editTextCNPJ.length() < 18){
+            Toast.makeText(CadastrarServicoActivity.this, "O Campo CNPJ tem que ter 14 digitos", Toast.LENGTH_SHORT).show();
+        }
+        else if(editTextEmail.length() < 5){
+            Toast.makeText(CadastrarServicoActivity.this, "O Campo E-Mail é Necessário estar Preenchido", Toast.LENGTH_SHORT).show();
+        }
+        else if(editTextTel.length() < 15){
+            Toast.makeText(CadastrarServicoActivity.this, "O Telefone tem que ter 9 digitos", Toast.LENGTH_SHORT).show();
+        }
+        else if(editTextCep.length() < 9){
+            Toast.makeText(CadastrarServicoActivity.this, "O CEP tem que ter 8 digitos", Toast.LENGTH_SHORT).show();
+        }
+        else if(editTextRua.length() < 2){
+            Toast.makeText(CadastrarServicoActivity.this, "É Necessário Preencher o campo Rua", Toast.LENGTH_SHORT).show();
+        }
+        else if(editTextN.length() < 2){
+            Toast.makeText(CadastrarServicoActivity.this, "è Necessário Informar o Nº", Toast.LENGTH_SHORT).show();
+        }
+        else if(editTextDescricao.length() < 5){
+            Toast.makeText(CadastrarServicoActivity.this, "É Necessário fazer uma Descrição sobre o Sistema", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            String Cpf = editTextCpf.getText().toString();
+            boolean Linha = daoTechOneHub.SelectCPF(Cpf);
+
+            if(Linha == true){
 
                 DatePickerDialog dialog = new DatePickerDialog(CadastrarServicoActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                     onDateSetListener, ano,mes,dia);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.setMessage("Defina o prazo desejado");
                 dialog.show();
-//            }
-//            else{
-//                Toast.makeText(CadastrarServicoActivity.this, "Esse CPF não está Cadastrado!!! É Necessário Cadastrar Primeiro um Cliente", Toast.LENGTH_SHORT).show();
-//            }
-//        }
+            }
+            else{
+                Toast.makeText(CadastrarServicoActivity.this, "Esse CPF não está Cadastrado!!! É Necessário Cadastrar Primeiro um Cliente", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
     private void Inserir() {
         dtoServico.setNm(editTextNome.getText().toString());

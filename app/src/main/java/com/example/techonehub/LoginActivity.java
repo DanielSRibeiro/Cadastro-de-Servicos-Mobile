@@ -9,7 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.techonehub.Dto.DtoLogin;
+import com.example.techonehub.model.Dto.DtoLogin;
+import com.example.techonehub.model.DaoTechOneHub;
 
 public class LoginActivity extends AppCompatActivity {
 

@@ -42,7 +42,7 @@
             android:name=".AgendaActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".AboutActivity"
+            android:name=".SobreActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".HomeActivity"

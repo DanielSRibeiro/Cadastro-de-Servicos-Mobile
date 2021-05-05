@@ -4,29 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.Toast;
 
-import com.example.techonehub.Dto.DtoServico;
-import com.example.techonehub.Dto.DtoSocio;
+import com.example.techonehub.model.Dto.DtoSocio;
 import com.example.techonehub.MeuAdapter.MeuAdapterSocio;
-import com.example.techonehub.MeuAdapter.RecyclerItemClickListenerCliente;
+import com.example.techonehub.MeuAdapter.OnClickItemListener;
+import com.example.techonehub.model.DaoTechOneHub;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
-public class AgendaActivity extends AppCompatActivity {
+public class AgendaActivity extends AppCompatActivity implements OnClickItemListener {
 
     ImageView imageViewCall, imagemViewBack;
     RecyclerView recyclerView;
@@ -49,28 +43,6 @@ public class AgendaActivity extends AppCompatActivity {
         arrayListSocio = daoTechOneHub.Select(dtoSocio);
         Atualizar();
 
-        recyclerView.addOnItemTouchListener(new RecyclerItemClickListenerCliente(AgendaActivity.this, recyclerView,
-                new RecyclerItemClickListenerCliente.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(View view, int position) {
-                        Intent intent = new Intent(AgendaActivity.this, SocioAgendaActivity.class);
-                        intent.putExtra("id", arrayListSocio.get(position).getId());
-                        intent.putExtra("nome", arrayListSocio.get(position).getNm());
-                        intent.putExtra("cpf", arrayListSocio.get(position).getCpf());
-                        intent.putExtra("espec", arrayListSocio.get(position).getEspec());
-                        startActivity(intent);
-                    }
-
-                    @Override
-                    public void onLongItemClick(View view, int position) {
-
-                    }
-
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                    }
-                }));
         editTextBuscar.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -97,6 +69,7 @@ public class AgendaActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         imagemViewBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,7 +80,7 @@ public class AgendaActivity extends AppCompatActivity {
     }
 
     private void Atualizar() {
-        MeuAdapterSocio adapter = new MeuAdapterSocio(arrayListSocio);
+        MeuAdapterSocio adapter = new MeuAdapterSocio(arrayListSocio, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(AgendaActivity.this));
         recyclerView.setAdapter(adapter);
     }
@@ -132,6 +105,21 @@ public class AgendaActivity extends AppCompatActivity {
         dtoSocio = new DtoSocio(5,"João Miziaria","120450780-01","Desenvolvedor Back-End");
         arrayListSocio.add(dtoSocio);
         daoTechOneHub.Insert(dtoSocio);
+
+    }
+
+    @Override
+    public void onClick(int posicao) {
+        Intent intent = new Intent(AgendaActivity.this, SocioAgendaActivity.class);
+        intent.putExtra("id", arrayListSocio.get(posicao).getId());
+        intent.putExtra("nome", arrayListSocio.get(posicao).getNm());
+        intent.putExtra("cpf", arrayListSocio.get(posicao).getCpf());
+        intent.putExtra("espec", arrayListSocio.get(posicao).getEspec());
+        startActivity(intent);
+    }
+
+    @Override
+    public void onLongClick(int posicao) {
 
     }
 }
