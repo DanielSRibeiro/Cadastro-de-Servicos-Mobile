@@ -4,17 +4,15 @@ Foi realizado um aplicativo de uma empresa fictícia nesse aplicativo é possív
 
 - Foi Utilizado SQLite para realizar o CRUD. Usando o RecyclerView para mostrar os Clientes e os Serviços que já realizaram o cadastro.
 
-## Login:label:
-
-- Username da tela de Login é Tech
-- Senha é 123456
-
 ## Tecnologias utilizadas:
 
 - [x]  Java
 - [x]  SQLite
 
 
-## Screenshots
-### Login
+## Login:label:
+
+- Username da tela de Login é Tech
+- Senha é 123456
+ 
 <img src="https://github.com/DanielSRibeiro/Sistema-Gestao-Empresarial/blob/main/img/login.gif" width="35%" />
