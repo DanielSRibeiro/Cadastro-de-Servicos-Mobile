@@ -18,15 +18,3 @@ Foi realizado um aplicativo de uma empresa fictícia nesse aplicativo é possív
 ## Screenshots
 ### Login
 <img src="https://github.com/DanielSRibeiro/Sistema-Gestao-Empresarial/blob/main/img/login.gif" width="35%" />
-
-### Cadastro de Cliente
-<img src="https://github.com/DanielSRibeiro/Sistema-Gestao-Empresarial/blob/main/img/cadastro%20cliente.png" width="35%" />
-
-### Consulta de Clientes
-<img src="https://github.com/DanielSRibeiro/Sistema-Gestao-Empresarial/blob/main/img/consulta%20cliente.png" width="35%" />
-
-### Cadastro de Serviço
-<img src="https://github.com/DanielSRibeiro/Sistema-Gestao-Empresarial/blob/main/img/servi%C3%A7o.png" width="35%" />
-
-### Consulta de Serviços
-<img src="https://github.com/DanielSRibeiro/Sistema-Gestao-Empresarial/blob/main/img/consulta%20servi%C3%A7o.png" width="35%" />
