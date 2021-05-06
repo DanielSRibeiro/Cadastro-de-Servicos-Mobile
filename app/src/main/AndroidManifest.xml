@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.techonehub">
 
-    <uses-permission android:name="android.permission.CALL_PHONE"> </uses-permission>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
         android:allowBackup="true"
@@ -11,47 +11,47 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TechOneHub">
-        <activity android:name=".AlterarServicoActivity"
+        <activity android:name=".ui.alterar.AlterarServicoActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ConsultarServicoActivity"
+            android:name=".ui.consultar.ConsultarServicoActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".SocioAgendaActivity"
+            android:name=".ui.SocioAgendaActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AlterarClienteActivity"
+            android:name=".ui.alterar.AlterarClienteActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CadastrarServicoActivity"
+            android:name=".ui.cadastrar.CadastrarServicoActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".ServicoActivity"
+            android:name=".ui.ServicoActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ConsultarClienteActivity"
+            android:name=".ui.consultar.ConsultarClienteActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CadastrarClienteActivity"
+            android:name=".ui.cadastrar.CadastrarClienteActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ClienteActivity"
+            android:name=".ui.ClienteActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AgendaActivity"
+            android:name=".ui.AgendaActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".SobreActivity"
+            android:name=".ui.SobreActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".ui.HomeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

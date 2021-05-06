@@ -1,4 +1,4 @@
-package com.example.techonehub.MeuAdapter;
+package com.example.techonehub.meuadapter;
 
 import android.view.LayoutInflater;
 import android.view.View;

@@ -1,4 +1,4 @@
-package com.example.techonehub.MeuAdapter;
+package com.example.techonehub.meuadapter;
 
 public interface OnClickItemListener {
     void onClick(int posicao);

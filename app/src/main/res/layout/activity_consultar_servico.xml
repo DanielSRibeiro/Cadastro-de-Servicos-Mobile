@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ConsultarServicoActivity">
+    tools:context=".ui.consultar.ConsultarServicoActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -117,7 +117,8 @@
         android:layout_marginTop="12dp"
         android:background="@drawable/back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="onClickVoltar"/>
 
     <ImageView
         android:id="@+id/imageViewCallConsultarServico"
@@ -127,6 +128,7 @@
         android:layout_marginRight="20dp"
         android:background="@drawable/call"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="onClickTelefone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
