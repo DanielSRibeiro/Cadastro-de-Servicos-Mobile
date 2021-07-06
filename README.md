@@ -14,24 +14,26 @@ Foi realizado um aplicativo de uma empresa fictícia nesse aplicativo é possív
 - Username da tela de Login é Tech
 - Senha é 123456
 
-<img src="https://github.com/DanielSRibeiro/Sistema-Gestao-Empresarial/blob/main/img/login.gif" width="30%" />
+<img src="img/login.gif" width="250" />
 
 #### Menu
 
-<img src="https://github.com/DanielSRibeiro/Sistema-Gestao-Empresarial/blob/main/img/menu.png" width="30%" />
+<img src="img/menu.png" width="250" />
 
 #### Cliente
 
-<img src="https://github.com/DanielSRibeiro/Sistema-Gestao-Empresarial/blob/main/img/cadastrarCliente.png" width="30%" />
-
-<img src="https://github.com/DanielSRibeiro/Sistema-Gestao-Empresarial/blob/main/img/consultarCliente.png" width="30%" />
+<div>
+<img src="img/cadastrarCliente.png" width ="250"  margin-left= "25px"/>
+<img src="img/consultarCliente.png" width ="250" />
+</div>
 
 #### Servições
 
-<img src="https://github.com/DanielSRibeiro/Sistema-Gestao-Empresarial/blob/main/img/cadastrarServicos.png" width="30%" />
-
-<img src="https://github.com/DanielSRibeiro/Sistema-Gestao-Empresarial/blob/main/img/consultarServicos.png" width="30%" />
+<div>
+<img src="img/cadastrarServicos.png" width ="250" />
+<img src="img/consultarServicos.png" width ="250" />
+</div>
 
 #### Socios
 
-<img src="https://github.com/DanielSRibeiro/Sistema-Gestao-Empresarial/blob/main/img/socios.png" width="30%" />
+<img src="img/socios.png" width ="250" />
