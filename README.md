@@ -4,36 +4,36 @@ Foi realizado um aplicativo de uma empresa fictícia nesse aplicativo é possív
 
 - Foi Utilizado SQLite para realizar o CRUD. Usando o RecyclerView para mostrar os Clientes e os Serviços que já realizaram o cadastro.
 
-### Tecnologias utilizadas:
+## Tecnologias utilizadas:
 
 - [x]  Java
 - [x]  SQLite
 
-#### Login:label:
+### Login:label:
 
 - Username da tela de Login é Tech
 - Senha é 123456
 
 <img src="img/login.gif" width="250" />
 
-#### Menu
+### Menu
 
 <img src="img/menu.png" width="250" />
 
-#### Cliente
+### Cliente
 
 <div>
 <img src="img/cadastrarCliente.png" width ="250"  margin-left= "25px"/>
 <img src="img/consultarCliente.png" width ="250" />
 </div>
 
-#### Servições
+### Servições
 
 <div>
 <img src="img/cadastrarServicos.png" width ="250" />
 <img src="img/consultarServicos.png" width ="250" />
 </div>
 
-#### Socios
+### Socios
 
 <img src="img/socios.png" width ="250" />
